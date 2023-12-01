@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {ProductService} from "../services/product.service";
 import {Product} from "../model/product.model";
 import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-products',
@@ -11,20 +12,25 @@ import {Observable} from "rxjs";
 })
 export class ProductsComponent implements OnInit{
   products! : Array<Product>;
-  keyword: any;
+  keyword: any = '';
+  totalPages: number=0;
+  pageSize: number=3;
+  currentPage: number=1;
 
-  constructor(private productsService: ProductService) {
+  constructor(private productsService: ProductService, private router:Router) {
   }
 
   ngOnInit(): void {
-    this.getProducts();
+    this.searchProducts();
   }
 
-  getProducts() {
+  searchProducts() {
     // this.products$ = this.productsService.getProducts();
-    this.productsService.getProducts().subscribe({
-      next: (products) => {
-        this.products = products
+    this.productsService.getProducts(this.keyword,this.currentPage, this.pageSize).subscribe({
+      next: (resp) => {
+        this.products = resp.body as Array<Product>;
+        let totalProducts = parseInt(resp.headers.get('X-Total-Count')!);
+        this.totalPages = Math.ceil(totalProducts / this.pageSize);
       },
       error: (err) => {
         console.log(err)
@@ -35,7 +41,7 @@ export class ProductsComponent implements OnInit{
   handleCheckProduct(product:Product) {
     this.productsService.checkProduct(product).subscribe({
       next: () => {
-        this.getProducts()
+        this.searchProducts()
       },
       error: (err) => {
         console.log(err)
@@ -57,14 +63,12 @@ export class ProductsComponent implements OnInit{
     }
   }
 
-  searchProducts() {
-    this.productsService.searchProducts(this.keyword).subscribe({
-      next: (products) => {
-        this.products = products
-      },
-      error: (err) => {
-        console.log(err)
-      }
-    })
+  handleGoTOPage(page: number) {
+    this.currentPage = page;
+    this.searchProducts();
+  }
+
+  handleEditProduct(product: Product) {
+    this.router.navigate(['/editProduct', product.id])
   }
 }

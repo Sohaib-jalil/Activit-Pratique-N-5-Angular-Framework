@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Computer",
-      "price": 9500,
+      "price": "9500",
       "checked": false
     },
     {
@@ -29,6 +29,24 @@
       "price": 500,
       "checked": false,
       "id": 5
+    },
+    {
+      "name": "console",
+      "price": 5500,
+      "checked": false,
+      "id": 6
+    },
+    {
+      "name": "cartable pc portable",
+      "price": 300,
+      "checked": false,
+      "id": 7
+    },
+    {
+      "name": "mouse",
+      "price": 350,
+      "checked": false,
+      "id": 8
     }
   ]
 }

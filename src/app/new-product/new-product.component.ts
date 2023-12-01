@@ -22,7 +22,8 @@ export class NewProductComponent implements OnInit{
   saveProduct() {
     let product = this.productForm.value;
     this.producService.addProduct(product).subscribe({
-      next: () => {
+      next: (data) => {
+        alert(JSON.stringify(data))
         this.productForm.reset();
         this.router.navigate(['/products']);
       },
