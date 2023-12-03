@@ -11,6 +11,11 @@ Créer une application web basée sur Angular qui permet de gérer les produits.
 - Editer un produit
 - Faire l'authentification et protéger les routes
 
+## Vidéos de référence:
+ - Part 1 : https://www.youtube.com/watch?v=Bq-vewCZk-o&authuser=0
+ - Part 2 : https://www.youtube.com/watch?v=h0zPn2d4fGI&authuser=0
+ - Part 3 : https://www.youtube.com/watch?v=ZWQtLaRM49o&authuser=0
+
 ## Afficher les produits
 ![Screenshot 2023-12-01 200621](https://github.com/Sohaib-jalil/Activit-Pratique-N-5-Angular-Framework/assets/92445933/b64b4901-e0fe-4f01-84b6-343bede910d1)
 
