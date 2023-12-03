@@ -41,7 +41,7 @@ export class EditProductComponent implements OnInit {
       next: (data) => {
         alert(JSON.stringify(data))
         console.log(data)
-        this.router.navigate(['/products'])
+        this.router.navigate(['/admin/products'])
       },
       error: (err) => {
         console.log(err)

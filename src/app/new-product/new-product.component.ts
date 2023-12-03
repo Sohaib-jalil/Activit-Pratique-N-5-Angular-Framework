@@ -25,7 +25,7 @@ export class NewProductComponent implements OnInit{
       next: (data) => {
         alert(JSON.stringify(data))
         this.productForm.reset();
-        this.router.navigate(['/products']);
+        this.router.navigate(['/admin/products']);
       },
       error: (err) => {
         console.log(err)

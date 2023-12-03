@@ -1,0 +1,26 @@
+<nav class="p-3 navbar">
+  <ul class="nav nav-pills">
+    <li *ngFor="let action of actions" class="nav-item">
+      <button (click)="setCurrentAction(action)" routerLink="{{action.route}}"
+              [class]="action === cuurrentAction? 'btn btn-success ms-1' : 'btn btn-outline-success ms-1'">
+        <i class="bi bi-{{action.icon}}"></i>
+        {{action.title}}
+      </button>
+    </li>
+  </ul>
+  <ul class="nav nav-pills">
+    <li *ngIf="appState.authState.isAuthenticated" class="nav-item">
+      {{appState.authState.username}}
+      <button (click)="logout()" class="btn btn-outline-success ms-1">
+        <i class="bi bi-box-arrow-right"></i>
+        Logout
+      </button>
+    </li>
+    <li *ngIf="!appState.authState.isAuthenticated" class="nav-item">
+      <button (click)="login()" class="btn btn-outline-success ms-1">
+        <i class="bi bi-box-arrow-in-right"></i>
+        Login
+      </button>
+    </li>
+  </ul>
+</nav>
